@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+
+<html class="loading" lang="en" data-textdirection="ltr">
+  <!-- BEGIN: Head-->
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Doctor</title>
+    <link rel="apple-touch-icon" href="static/images/apple-touch-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="static/images/favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i%7CQuicksand:300,400,500,700" rel="stylesheet">
+<script src="https://kit.fontawesome.com/b705027cc2.js" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+
+    <!-- BEGIN: Vendor CSS-->
+    <link rel="stylesheet" type="text/css" href="static/css/vendors.min.css">
+    <!-- END: Vendor CSS-->
+  <link href="static/css/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- BEGIN: Theme CSS-->
+    <link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="static/css/bootstrap-extended.min.css">
+    <link rel="stylesheet" type="text/css" href="static/css/colors.min.css">
+    <link rel="stylesheet" type="text/css" href="static/css/components.min.css">
+    <!-- END: Theme CSS-->
+
+    <!-- BEGIN: Page CSS-->
+    <link rel="stylesheet" type="text/css" href="static/css/vertical-menu.min.css">
+    <link rel="stylesheet" type="text/css" href="static/css/palette-gradient.min.css">
+    <link rel="stylesheet" type="text/css" href="static/css/hospital.min.css">
+    <!-- END: Page CSS-->
+
+
+  </head>
+  <!-- END: Head-->
+
+  <!-- BEGIN: Body-->
+  <body class="vertical-layout vertical-menu 2-columns   fixed-navbar" data-open="click" data-menu="vertical-menu" data-col="2-columns">
+
+    <!-- BEGIN: Header-->
+    <nav class="header-navbar navbar-expand-md navbar navbar-with-menu navbar-without-dd-arrow fixed-top navbar-semi-light bg-info navbar-shadow">
+      <div class="navbar-wrapper">
+        <div class="navbar-header">
+          <ul class="nav navbar-nav flex-row">
+            <li class="nav-item mobile-menu d-md-none mr-auto"><a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#">
+			<!-- <i class="ft-menu font-large-1"></i> -->
+			<i class="fa-solid fa-bars font-large-1"></i>
+			</a></li>
+            <li class="nav-item"><a class="navbar-brand" href="http://127.0.0.1:5000/dlogin"><img class="brand-logo" alt="modern admin logo" src="static/images/surgery.png">
+                <h3 class="brand-text">Hello Doctor</h3></a></li>
+            <li class="nav-item d-md-none"><a class="nav-link open-navbar-container" data-toggle="collapse" data-target="#navbar-mobile"><i class="fa-solid fa-chevron-down"></i></a></li>
+          </ul>
+        </div>
+        <div class="navbar-container content">
+          <div class="collapse navbar-collapse" id="navbar-mobile">
+            <ul class="nav navbar-nav mr-auto float-left">
+              <li class="nav-item d-none d-md-block"><a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i class="fa-solid fa-bars"></i></a></li>
+              
+                         </ul>
+            <ul class="nav navbar-nav float-right">
+              <li class="dropdown dropdown-language nav-item"><a class="dropdown-toggle nav-link" id="dropdown-flag" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="flag-icon flag-icon-gb"></i><span class="selected-language"></span></a>
+              </li>
+             
+              {% for row in data %}
+            
+             
+              <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown"><span class="mr-1 user-name text-bold-700">{{row[1]}}</span><span class="avatar avatar-online"><img src="static/images/surgery.png" alt="avatar"><i></i></span></a>
+                <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="http://127.0.0.1:5000/u"> <i class="fa-solid fa-pen"></i>Edit Profile</a>	
+                  <div class="dropdown-divider"></div><a class="dropdown-item" href="http://127.0.0.1:5000"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+                </div>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div> 
+      {% with messages = get_flashed_messages(with_categories=true) %}
+     {% if messages %}
+     {% for category, message in messages %}
+     <div class="alert alert-{{ category }} alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+     {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+   </div>
+   
+    <!-- END: Header-->
+
+
+    <!-- BEGIN: Main Menu-->
+
+    <div class="main-menu menu-fixed menu-light menu-accordion    menu-shadow " data-scroll-to-active="true">
+      <div class="main-menu-content">
+        <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+          <li class="active"><a href="http://127.0.0.1:5000/dlogin"><i class="fa-solid fa-house"></i><span class="menu-title" data-i18n="Dashboard Hospital">Dashboard Hospital</span></a>
+          </li>
+         
+          <li class=" nav-item"><a href="#"><i class="fa-solid fa-pen"></i><span class="menu-title" data-i18n="Appointment">Appointment</span></a>
+            <ul class="menu-content">
+              <li><a class="menu-item" href="http://127.0.0.1:5000/dsched"><i></i><span>Doctor Schedule</span></a>
+              </li>
+              <li><a class="menu-item" href="http://127.0.0.1:5000/dappoin"><i></i><span>Book Surgery</span></a>
+              </li>
+            </ul>
+          </li>
+          <li class=" nav-item"><a href="#"><i class="fa-solid fa-stethoscope"></i><span class="menu-title" data-i18n="Doctors">Doctors</span></a>
+            <ul class="menu-content">
+              <li><a class="menu-item" href="http://127.0.0.1:5000/dlist"><i></i><span>Scans</span></a>
+              </li>
+             
+              <li><a class="menu-item" href="http://127.0.0.1:5000/u"><i></i><span>Doctor Profile</span></a>
+              </li>
+            </ul>
+          </li>
+          
+         
+        </ul>
+      </div>
+    </div>
+
+    <!-- END: Main Menu-->
+    <!-- BEGIN: Content-->
+    <div class="app-content content">
+      <div class="content-overlay"></div>
+      <div class="content-wrapper">
+        <div class="content-header row">
+        </div>
+        <div class="content-body"><!-- Hospital Info cards -->
+<div class="row">
+  <div class="col-xl-3 col-lg-6 col-md-6 col-12">
+    <div class="card pull-up">
+      <div class="card-content">
+        <div class="card-body">
+          <div class="media d-flex">
+            <div class="align-self-center">
+		        	<i class="font-large-2 fa-solid fa-user-doctor" style="margin-right:2px"></i>
+              <!-- <i class="la la-user-md font-large-2 success"></i> -->
+            </div>
+            <div class="media-body text-right">
+              <h5 class=" text-bold-500">Doctors</h5>
+              <h3 class="text-bold-600">&nbsp;{{countdoc.countdr}}</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-3 col-lg-6 col-md-6 col-12">
+    <div class="card pull-up">
+      <div class="card-content">
+        <div class="card-body">
+          <div class="media d-flex">
+            <div class="align-self-center">
+              <i class="font-large-2 fa-solid fa-stethoscope"></i>
+            </div>
+            <div class="media-body text-right">
+              <h5 class="text-bold-500">Patients</h5>
+              <h3 class="text-bold-600">&nbsp;{{countdoc.countpat}}</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-3 col-lg-6 col-md-6 col-12">
+    <div class="card pull-up">
+      <div class="card-content">
+        <div class="card-body">
+          <div class="media d-flex">
+            <div class="align-self-center">
+              <i class="font-large-2 fa-solid fa-calendar"></i>
+            </div>
+            <div class="media-body text-right">
+              <h5 class="text-bold-500">Total Appoints</h5>
+              <h3 class="text-bold-600"> &nbsp;  {{countdoc.counttapp}}</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+<!-- Appointment Table -->
+<div class="row match-height">
+  <div class="col-12 col-md-4">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">My patients</h4>
+      </div>
+      <div class="card-content">
+        <div class="table-responsive">
+          <table id="recent-orders" class="table table-hover table-xl mb-0">
+          <tbody>
+            {% for r in mypatients %}
+            <tr>
+              <td class="text-truncate "style="  padding-top: 10px;  padding-bottom: 10px; padding-left: 20px; padding-right: 10px;">
+                <div class="avatar avatar-md">
+                  <img src="{{r[-1]}}" class="center" alt="Profile" class="rounded-circle">
+                </div>
+              </td>
+              <td class="text-truncate pl-0 border-top-0">
+                <div class="name">{{r[0]}} {{r[1]}}</div>
+                
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="recent-appointments" class="col-12 col-md-8">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">Recent Appointments</h4>
+        <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+        <div class="heading-elements">
+          <ul class="list-inline mb-0">
+          </ul>
+        </div>
+      </div>
+      <div class="card-content mt-1">
+        <div class="table-responsive">
+            <table id="recent-orders-doctors" class="table table-hover table-xl mb-0">
+                <thead>
+            <tr>
+              <th class="border-top-0">Patients' ID</th>
+              <th class="border-top-0">Dates</th>
+              <th class="border-top-0">Timings</th>
+            </tr>
+                </thead>
+                <tbody>
+              {% for r in drs %}
+            <tr class="pull-up">
+              <td class="text-truncate">{{r[2]}}</td>
+              <td class="text-truncate">{{r[3]}}</td>
+              <td class="text-truncate">{{r[5]}}</td>
+              </td>
+            </tr> 
+               {% endfor %}
+              </tbody>
+            </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Appointment Table Ends -->
+        </div>
+      </div>
+    </div>
+    <!-- END: Content-->
+
+
+   
+
+   
+
+    <!-- BEGIN: Footer-->
+   
+    <!-- END: Footer-->
+
+
+    <!-- BEGIN: Vendor JS-->
+    <script src="static/js/vendors.min.js"></script>
+    <!-- BEGIN Vendor JS-->
+
+    <!-- BEGIN: Page Vendor JS-->
+    <script src="static/js/chart.min2.js"></script>
+    <!-- END: Page Vendor JS-->
+
+    <!-- BEGIN: Theme JS-->
+    <script src="static/js/app-menu.min.js"></script>
+    <script src="static/js/app.min.js"></script>
+    <script src="static/js/customizer.min.js"></script>
+    <script src="static/js/footer.min.js"></script>
+    <!-- END: Theme JS-->
+
+    <!-- BEGIN: Page JS-->
+    <script src="static/js/appointment.min.js"></script>
+    <!-- END: Page JS-->
+
+  </body>
+  <!-- END: Body-->
+</html>
